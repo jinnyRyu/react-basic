@@ -38,10 +38,9 @@ const MovieForm = ({ addMovie }) => {
                 year: movieYear
             });
             resetErrors();
-        } else {
+            resetForm();
+        } 
 
-        }
-        resetForm();
     };
     return (
         <form onSubmit={onSubmit}>
