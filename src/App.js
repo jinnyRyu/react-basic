@@ -4,12 +4,19 @@ import Movie from './components/Movie';
 import MovieForm from './components/MovieForm ';
 import Navbar from './components/Navbar';
 
+import {
+  BrowserRouter as Router,
+  Route
+
+
+} from 'react-router-dom';
+
 function App() {
-  const [movies, setMovies] = useState([ ]);
+  const [movies, setMovies] = useState([]);
 
 
-  const removeMovie=(id)=>{
-    setMovies(movies.filter(movie=>{
+  const removeMovie = (id) => {
+    setMovies(movies.filter(movie => {
       return movie.id != id;
     }))
   }
@@ -17,7 +24,7 @@ function App() {
     return (
       <Movie movie={movie} key={movie.id} removeMovie={removeMovie} />
     );
-  }): '추가된 영화가 없습니다. ';
+  }) : '추가된 영화가 없습니다. ';
 
   const addMovie = (movie) => {
     setMovies([
@@ -27,13 +34,24 @@ function App() {
 
   };
   return (
-    <div className="App">
-      <Navbar></Navbar>
-      <h1>Movie list</h1>
-      <MovieForm  addMovie={addMovie}/>
-      {renderMovies}
-    </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route path='/movies'>
+            <h1>Movie list</h1>
+            <MovieForm addMovie={addMovie} />
+            {renderMovies}
+          </Route>
+          <Route path='/users'>
+            <h1>users</h1>
+          </Route>
+          <Route path='/'>
+            <h1>home</h1>
+          </Route>
+        </div>
+      </Router>
   );
 }
 
 export default App;
+//route 태그 하나당 하나의 페이지를 나타냄
