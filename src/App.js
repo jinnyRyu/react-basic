@@ -6,7 +6,8 @@ import Navbar from './components/Navbar';
 
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 
 
 } from 'react-router-dom';
@@ -34,9 +35,10 @@ function App() {
 
   };
   return (
-      <Router>
-        <div className="App">
-          <Navbar />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
           <Route path='/movies'>
             <h1>Movie list</h1>
             <MovieForm addMovie={addMovie} />
@@ -48,8 +50,11 @@ function App() {
           <Route path='/'>
             <h1>home</h1>
           </Route>
-        </div>
-      </Router>
+        </Switch >
+      </div>
+    </Router >
+
+
   );
 }
 
