@@ -4,19 +4,20 @@ import Movie from './components/Movie';
 import MovieForm from './components/MovieForm ';
 
 function App() {
-  const [movies, setMovies] = useState([
-    { title: 'kossie coder1', year: 2001 },
-    { title: 'kossie coder2', year: 2002 },
-    { title: 'kossie coder3', year: 2003 },
-    { title: 'kossie coder4', year: 2004 }
-  ]);
+  const [movies, setMovies] = useState([ ]);
 
 
-  const renderMovies = movies.map(movie => {
+  const removeMovie=(id)=>{
+    setMovies(movies.filter(movie=>{
+      return movie.id != id;
+    }))
+  }
+  const renderMovies = movies.length ? movies.map(movie => {
     return (
-      <Movie movie={movie} key={movie.title} />
+      <Movie movie={movie} key={movie.id} removeMovie={removeMovie} />
     );
-  });
+  }): '추가된 영화가 없습니다. ';
+
   const addMovie = (movie) => {
     setMovies([
       ...movies,//구조분해 할당 
