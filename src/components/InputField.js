@@ -21,4 +21,4 @@ const InputField = ({
     );
 };
 
-export default InputField;
+export default InputField ;
