@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Movie from './components/Movie';
 import MovieForm from './components/MovieForm ';
+import Navbar from './components/Navbar';
 
 function App() {
   const [movies, setMovies] = useState([ ]);
@@ -27,6 +28,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Navbar></Navbar>
       <h1>Movie list</h1>
       <MovieForm  addMovie={addMovie}/>
       {renderMovies}
